@@ -1,0 +1,22 @@
+# Dockerfile.publisher
+# --------------------
+# Image untuk service publisher (dipakai oleh Docker Compose)
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+RUN adduser --disabled-password --gecos '' appuser \
+    && chown -R appuser:appuser /app
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+USER appuser
+
+COPY publisher/ ./publisher/
+
+# URL aggregator di-set oleh Docker Compose
+ENV AGGREGATOR_URL=http://aggregator:8080
+
+CMD ["python", "publisher/simulate_publisher.py"]
