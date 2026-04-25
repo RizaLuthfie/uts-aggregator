@@ -85,4 +85,4 @@ curl http://localhost:8080/stats
 
 ## Video Demo
 
-[Link YouTube — akan diisi setelah rekam demo]
+https://youtu.be/SEmDlotYDBE?si=kxMfQwjkmoShIrX5
